@@ -15,7 +15,7 @@ This can be hosted on a an Azure Web App as well as a regular IIS site (on premi
 
 In order to display a report in an embedded page without chrome or UI elements:
 
-http://<website>/?WorkspaceID=<WorkspaceID>&ReportID=<ReportID>&ReportSection=<ReportSection>&RefreshIntervalMinutes=<RefreshIntervalAsMinutes>
+```http://<website>/?WorkspaceID=<WorkspaceID>&ReportID=<ReportID>&ReportSection=<ReportSection>&RefreshIntervalMinutes=<RefreshIntervalAsMinutes>```
   
 <website>: whatever hostname you use to host your website
 <WorkspaceID>, <ReportID>, <ReportSection>: details of the report that you are showing, these IDs can be found by navigating to the report in Power BI and get the details out of the URL.
@@ -26,7 +26,7 @@ http://<website>/?WorkspaceID=<WorkspaceID>&ReportID=<ReportID>&ReportSection=<R
 
 In order to display a dashboard in an embedded page without chrome or UI elements:
 
-http://<website>/?WorkspaceID=<WorkspaceID>&DashboardID=<DashboardID>&RefreshIntervalMinutes=<RefreshIntervalAsMinutes>
+```http://<website>/?WorkspaceID=<WorkspaceID>&DashboardID=<DashboardID>&RefreshIntervalMinutes=<RefreshIntervalAsMinutes>```
   
 <website>: whatever hostname you use to host your website
 <WorkspaceID>, <DashboardID>: details of the dashboard that you are showing, these IDs can be found by navigating to the report in Power BI and get the details out of the URL.
