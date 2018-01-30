@@ -1,5 +1,5 @@
 # powerbi-fullscreen
-Embeds Power BI content in a webpage and renders it fullscreen without UI elements. Optionally refreshes data sources with intervals.
+Website to embed Power BI content in a webpage and render it fullscreen without UI elements. Optionally refreshes data sources with intervals.
 
 This can be hosted on a an Azure Web App as well as a regular IIS site (on premise or on Azure VM).
 
@@ -19,7 +19,7 @@ In order to display a report in an embedded page without chrome or UI elements:
   
 <website>: whatever hostname you use to host your website
 <WorkspaceID>, <ReportID>, <ReportSection>: details of the report that you are showing, these IDs can be found by navigating to the report in Power BI and get the details out of the URL.
-<RefreshIntervalAsMinutes>: if report should update automatically from dataset, define this in minutes.
+<RefreshIntervalAsMinutes>: if report should update automatically from dataset, define this in minutes. Can be omitted for no refresh.
 
 
 ## Usage - Dashboard
@@ -30,4 +30,4 @@ In order to display a dashboard in an embedded page without chrome or UI element
   
 <website>: whatever hostname you use to host your website
 <WorkspaceID>, <DashboardID>: details of the dashboard that you are showing, these IDs can be found by navigating to the report in Power BI and get the details out of the URL.
-<RefreshIntervalAsMinutes>: if dashboard should update automatically from dataset, define this in minutes.
+<RefreshIntervalAsMinutes>: if dashboard should update automatically from dataset, define this in minutes. Can be omitted for no refresh.
