@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script>
+        function getParameterByName(name, url) {
+            if (!url)
+                url = window.location.href;
+
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+
+            if (!results)
+                return null;
+
+            if (!results[2])
+                return '';
+
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        var getLocation = function (href) {
+            var l = document.createElement("a");
+            l.href = href;
+            return l;
+        };
+
+        function originalUrlOnClick(sender) {
+            var url = getLocation(document.getElementById("originalUrl").value).pathname.split('/');
+            console.info(url);
+            console.info(window.location.host);
+
+            if (url[1] == "groups" && url.length >= 5) {
+                var embedUrl = "http://"+window.location.host+"?WorkspaceID="
+                    + url[2]
+                    + "&ReportID="
+                    + url[4];
+
+                if (url.length == 6)
+                    embedUrl += "&ReportSection="
+                        + url[5];
+
+                console.info(embedUrl);
+
+                document.getElementById("embedUrl").innerHTML = "<a href=\""+embedUrl+"\">"+embedUrl+"</a>";
+            };
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Original Url from workspace:</td>
+            <td><input type="text" id="originalUrl" style="width: 800px" /></td>
+            <td><input type="button" onclick="javascript:originalUrlOnClick()" value="Get Fullscreen URL" /></td>
+        </tr>
+        <tr>
+            <td>Fullscreen Embed Url:</td>
+            <td><div id="embedUrl" /></td>
+        </tr>
+    </table>
+</body>
+</html>

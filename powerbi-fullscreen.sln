@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "powerbi-fullscreen", "powerbi-fullscreen\powerbi-fullscreen.csproj", "{63E59934-80F1-4D09-9DB5-FB853848A537}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63E59934-80F1-4D09-9DB5-FB853848A537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63E59934-80F1-4D09-9DB5-FB853848A537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63E59934-80F1-4D09-9DB5-FB853848A537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63E59934-80F1-4D09-9DB5-FB853848A537}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89548C38-5574-4E6D-92F4-6ECCA313B700}
+	EndGlobalSection
+EndGlobal
