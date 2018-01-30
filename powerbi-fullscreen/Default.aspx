@@ -3,25 +3,59 @@
     <script type="text/javascript" src="scripts/powerbi.js"></script>
 
     <script type="text/javascript">
-        var r;
+        var d;
 
         window.onload = function () {
             var accessToken = document.getElementById('MainContent_accessToken').value;
 
-            if (!accessToken || accessToken == "")
-            {
+            if (!accessToken || accessToken == "") {
                 return;
             }
 
             var embedUrl = document.getElementById('MainContent_hdEmbedUrl').value;
-            var reportId = document.getElementById('MainContent_hdReportId').value;
+            var container = document.getElementById('container');
+            var interval = document.getElementById('MainContent_hdRefreshIntervalMinutes').value * 60 * 1000;
+            var contentType = document.getElementById('MainContent_hdContentType').value;
+
+            if (contentType == "report") {
+                embedReport(accessToken, embedUrl, container, interval);
+            } else if (contentType == "dashboard") {
+                embedDashboard(accessToken, embedUrl, container, interval);
+            }
+        };
+
+        function embedDashboard(accessToken, embedUrl, container, interval) {
+            console.info("embedDashboard");
+
+            var config = {
+                type: 'dashboard',
+                accessToken: accessToken,
+                embedUrl: embedUrl
+            }
+
+            d = powerbi.embed(container, config);
+
+            if (interval > 0) {
+                window.setInterval(
+                    function () {
+                        if (d != null) {
+                            d.reload();
+                            console.info("Dashboard reloaded");
+                        }
+                    },
+                    interval);
+            }            
+        }
+
+        function embedReport(accessToken, embedUrl, container, interval) {
+            console.info("embedReport");
+
             var reportSection = document.getElementById('MainContent_hdReportSection').value;
 
-            var config= {
+            var config = {
                 type: 'report',
                 accessToken: accessToken,
                 embedUrl: embedUrl,
-                id: reportId,
                 pageName: reportSection,
                 settings: {
                     filterPaneEnabled: false,
@@ -29,18 +63,24 @@
                 }
             };
 
-            var reportContainer = document.getElementById('reportContainer');
+            var r = powerbi.embed(container, config);
 
-            r = powerbi.embed(reportContainer, config);
-        };
+            if (interval > 0) {
+                window.setInterval(
+                    function () {
+                        if (r != null) {
+                            r.refresh();
+                            console.info("Report reloaded");
+                        }
+                    },
+                    interval);
+            }
+        }
 
-        window.setInterval(function () {
-            r.refresh();
-        }, 10000)
     </script>
 
     <style>
-        #reportContainer {
+        #container {
             position: absolute;
             top: 0; right: 0; bottom: 0; left: 0;
             overflow: hidden;
@@ -58,7 +98,8 @@
     </style>
     <asp:HiddenField ID="accessToken" runat="server" />
     <asp:HiddenField ID="hdEmbedUrl" runat="server" />
-    <asp:HiddenField ID="hdReportId" runat="server" />
     <asp:HiddenField ID="hdReportSection" runat="server" />
-    <div ID="reportContainer" />
+    <asp:HiddenField ID="hdRefreshIntervalMinutes" runat="server" />
+    <asp:HiddenField ID="hdContentType" runat="server" />
+    <div ID="container" />
 </asp:Content>

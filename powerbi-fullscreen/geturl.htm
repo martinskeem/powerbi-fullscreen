@@ -33,7 +33,7 @@
             console.info(window.location.host);
 
             if (url[1] == "groups" && url.length >= 5) {
-                var embedUrl = "http://"+window.location.host+"?WorkspaceID="
+                var embedUrl = "http://" + window.location.host + "?WorkspaceID="
                     + url[2]
                     + "&ReportID="
                     + url[4];
@@ -42,9 +42,13 @@
                     embedUrl += "&ReportSection="
                         + url[5];
 
+
+                if (document.getElementById("refresh").checked)
+                    embedUrl += "&RefreshIntervalMinutes=15"
+
                 console.info(embedUrl);
 
-                document.getElementById("embedUrl").innerHTML = "<a href=\""+embedUrl+"\">"+embedUrl+"</a>";
+                document.getElementById("embedUrl").innerHTML = "<a href=\"" + embedUrl + "\">" + embedUrl + "</a>";
             };
         }
     </script>
@@ -59,12 +63,14 @@
         <tr>
             <td>Original Url from workspace:</td>
             <td><input type="text" id="originalUrl" style="width: 800px" /></td>
+            <td><input type="checkbox" name="refresh" id="refresh" value="1" /><label for="refresh">Refresh Automatically</label></td>
             <td><input type="button" onclick="javascript:originalUrlOnClick()" value="Get Fullscreen URL" /></td>
         </tr>
         <tr>
             <td>Fullscreen Embed Url:</td>
-            <td><div id="embedUrl" /></td>
+            <td colspan="3"><div id="embedUrl" /></td>
         </tr>
     </table>
+
 </body>
 </html>

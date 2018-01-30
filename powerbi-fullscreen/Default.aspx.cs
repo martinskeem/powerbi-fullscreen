@@ -45,10 +45,22 @@ namespace PowerBiFullScreen
             var reportId = queryString["ReportID"];
             var workspaceId = queryString["WorkspaceID"];
             var reportSection = queryString["ReportSection"];
+            var refreshIntervalMinutes = queryString["RefreshIntervalMinutes"];
+            var dashboardId = queryString["DashboardID"];
 
-            hdEmbedUrl.Value = String.Format("https://app.powerbi.com/reportEmbed?reportId={0}&groupId={1}", reportId, workspaceId);
-            hdReportId.Value = reportId;
-            hdReportSection.Value = reportSection;
+            hdRefreshIntervalMinutes.Value = refreshIntervalMinutes;
+
+            if (reportId != null)
+            {
+                hdEmbedUrl.Value = String.Format("https://app.powerbi.com/reportEmbed?reportId={0}&groupId={1}", reportId, workspaceId);
+                hdReportSection.Value = reportSection;
+                hdContentType.Value = "report";
+            }
+            else if (dashboardId != null)
+            {
+                hdEmbedUrl.Value = String.Format("https://app.powerbi.com/dashboardEmbed?dashboardId={0}&groupId={1}", dashboardId, workspaceId);
+                hdContentType.Value = "dashboard";
+            }
         }
 
         public void GetAuthorizationCode()

@@ -69,7 +69,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Default.aspx" />
-    <Content Include="geturl.html" />
+    <Content Include="geturl.htm" />
     <None Include="Properties\PublishProfiles\PowerBiFullScreen20180127092036 - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

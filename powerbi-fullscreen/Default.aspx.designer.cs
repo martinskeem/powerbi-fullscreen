@@ -31,15 +31,6 @@ namespace PowerBiFullScreen {
         protected global::System.Web.UI.WebControls.HiddenField hdEmbedUrl;
         
         /// <summary>
-        /// hdReportId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdReportId;
-        
-        /// <summary>
         /// hdReportSection control.
         /// </summary>
         /// <remarks>
@@ -47,5 +38,23 @@ namespace PowerBiFullScreen {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdReportSection;
+        
+        /// <summary>
+        /// hdRefreshIntervalMinutes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdRefreshIntervalMinutes;
+        
+        /// <summary>
+        /// hdContentType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdContentType;
     }
 }
